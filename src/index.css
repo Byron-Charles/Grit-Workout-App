@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap");
+
+.app {
+  width: 600px;
+  margin: 0 auto;
+  background: #222;
+  height: auto;
+  font-family: "Alfa Slab One", cursive;
+  box-sizing: border-box;
+  padding: 10px 20px;
+}
+
+.grit-header {
+  color: #222;
+  background: #fff;
+  text-align: center;
+  padding: 10px;
+  font-size: 2rem;
+}
+
+.lift-list {
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  justify-content: space-evenly;
+  gap: 20px 5px;
+  flex-wrap: wrap;
+}
+
+.lift-card {
+  background: #fff;
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+  border-radius: 2px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.lift-card:hover {
+  background: lightgray;
+}
+
+.lift-icon {
+  width: 80px;
+  object-fit: cover;
+}
+
+.btn-div {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+.btn {
+  color: #222;
+  background: #fff;
+  text-align: center;
+  padding: 20px;
+  width: 90%;
+  font-family: "Alfa Slab One", cursive;
+  font-size: 1.5rem;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: lightgray;
+}
+
+.workout-div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: #fff;
+  padding: 10px;
+}
+
+.workout-div > p {
+  padding-right: 60px;
+  width: 50px;
+  /* border: 2px red solid; */
+}
+
+.inputs {
+  /* border: 2px red solid; */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+  width: 70%;
+}
+
+.workout-input {
+  width: 50px;
+  background: lightgray;
+  font-size: 1.5rem;
+}
+
+.completed-workout-div {
+  display: flex;
+  background: white;
+  justify-content: center;
+  gap: 5px;
+}
