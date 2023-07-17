@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import data from "./data";
+import quotes from "./quotes";
 
 function App() {
   const [add, setAdd] = useState(false);
   const [showInputs, setShowInputs] = useState(false);
   const [lifts, setLifts] = useState([]);
   const [workout, setWorkout] = useState([]);
-  const [allWorkouts, setAllWorkouts] = useState([]);
+  const [allWorkouts, setAllWorkouts] = useState();
   function toggleAdd() {
     setAdd((prevState) => !prevState);
   }
@@ -20,6 +21,7 @@ function App() {
     <div className="app">
       <Header />;{add && <LiftList onAddLift={handleAddLift} />}
       <Button onClick={toggleAdd}>{add ? "Close" : "Add Workout"}</Button>
+      {!add && <Quotes />}
       {showInputs && (
         <Workout
           add={add}
@@ -36,6 +38,16 @@ function App() {
       )}
       <Completed workout={workout} />
       {/* <RenderAllWorkouts allWorkouts={allWorkouts} /> */}
+    </div>
+  );
+}
+
+function Quotes() {
+  const randomNumber = Math.floor(Math.random() * quotes.length);
+  return (
+    <div className="quotes-div">
+      <p className="quote">{quotes[randomNumber].quote}</p>
+      <p className="author"> - {quotes[randomNumber].author}</p>
     </div>
   );
 }
@@ -92,6 +104,10 @@ function Workout({
     //   return workout.map((wo) => ({ ...wo, id: date }));
     // });
 
+    const id = new Date().toLocaleDateString("en-US");
+
+    const result = workout.filter((workout) => workout.id === id);
+    console.log(result);
     setAdd(false);
     setShowInputs(false);
     setLifts([]);
@@ -169,19 +185,17 @@ function Lift({ name, workout, setWorkout, setAllWorkouts, allWorkouts }) {
 function Completed({ workout }) {
   return (
     <div>
-      <div>
-        {workout.map((workout) => (
-          <div>
-            <p className="date-info">{workout.id}</p>
-            <div className="completed-workout-div">
-              <p>Lift: {workout.name}</p>
-              <p>Sets: {workout.sets}</p>
-              <p>Reps: {workout.reps}</p>
-              <p>Weight: {workout.weight}</p>
-            </div>
+      {workout.map((workout) => (
+        <div>
+          <p className="date-info">{workout.id}</p>
+          <div className="completed-workout-div">
+            <p>Lift: {workout.name}</p>
+            <p>Sets: {workout.sets}</p>
+            <p>Reps: {workout.reps}</p>
+            <p>Weight: {workout.weight}</p>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   );
 }
